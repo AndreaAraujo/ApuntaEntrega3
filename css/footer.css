@@ -1,0 +1,11 @@
+#main-footer {
+	background: url("../img/mesafooter.jpg");
+	background-size: cover;
+	color: #c4c4c4, blond;
+	text-align: center;
+	margin-top: 50%;
+	width:110%;
+	height: 60px;
+	position: relative;
+	font-size: 15px;
+}
