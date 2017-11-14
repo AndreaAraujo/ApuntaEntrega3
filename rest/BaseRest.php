@@ -19,7 +19,7 @@ class BaseRest {
 	* credentials are invalid, it will generate a 401 code as well and end PHP
 	* processing.
 	*
-	* @return User the user just authenticated.
+	*
 	*/
 	public function authenticateUser() {
 		if (!isset($_SERVER['PHP_AUTH_USER'])) {
@@ -32,7 +32,7 @@ class BaseRest {
 			if ($usuarioMapper->isValidUser(
 			$_SERVER['PHP_AUTH_USER'],
 			$_SERVER['PHP_AUTH_PW'])) {
-				return new User($_SERVER['PHP_AUTH_USER']);
+				return new Usuario($_SERVER['PHP_AUTH_USER']);
 			} else {
 				header($_SERVER['SERVER_PROTOCOL'].' 401 Unauthorized');
 				header('WWW-Authenticate: Basic realm="Rest API of MVCBLOG"');
