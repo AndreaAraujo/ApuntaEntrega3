@@ -1,0 +1,38 @@
+body{
+	font-family: "Georgia";
+	overflow-x: hidden;
+  overflow-y: hidden;
+	position: absolute;
+	background: url("../img/fondoLogin.png");
+	background-repeat : repeat-y;
+	background-size: cover;
+	height: 800px;
+}
+
+#login{
+	background-color: #ccc7f9;
+  border-radius: 34px;
+  box-shadow: 3px 3px 10px 0px rgba(50, 50, 50, 50);
+	margin: 30%  180%;
+  max-width: 300px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+label {
+  color: black;
+  display: block;
+  margin-bottom: 8px;
+  margin-left: 1em;
+}
+
+#reg{
+  font-size: 18px;
+  color: black;
+	margin-left: 18px;
+}
+#main-content {
+	position:relative;
+	top:70px;
+	margin-left: 100px;
+}

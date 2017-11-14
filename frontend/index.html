@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="stylesheet" href="../css/index.css"></link>
+      <link rel="shortcut icon" href="../img/favicon.ico">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+      <script src="../js/lib/fronty.js"></script>
+      <!-- user code -->
+      <script src="../templates/helpers.js"></script>
+      <script src="../js/model/nota.js"></script>
+      <script src="../js/model/notas.js"></script>
+      <script src="../js/model/user.js"></script>
+      <script src="../js/service/notasservice.js"></script>
+      <script src="../js/service/userservice.js"></script>
+      <script src="../js/component/maincomponent.js"></script>
+      <script src="../js/component/notascomponent.js"></script>
+      <script src="../js/component/notaviewcomponent.js"></script>
+      <script src="../js/component/notaaddcomponent.js"></script>
+      <script src="../js/component/notaeditcomponent.js"></script>
+      <script src="../js/component/logincomponent.js"></script>
+
+      <script src="../js/i18n/I18n.js"></script>
+
+      <script src="../js/app.js"></script>
+
+  </head>
+
+  <body id="frontyapp">
+
+    <div class="container" id="login">
+
+    <center>
+      <form "../index.html"   method="post">
+        <label for = "logUsuario">Nombre de usuario: </label>
+        <input type="text" name="logUsuario"><br><br>
+        <label for = "conUsuario">Contraseña: </label>
+        <input type="password" name="conUsuario"><br><br>
+        <a href="#" id="reg">¡Regístrate aquí!</a>
+        <a href="#" id="reg"><button type="submit" class="btn btn-default" >Iniciar sesión</button></a>
+      </form>
+    </center>
+    </div>
+  </body>
+</html>

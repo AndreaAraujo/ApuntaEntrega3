@@ -1,8 +1,8 @@
 <?php
 
 //require_once(__DIR__."/../model/Comment.php");
-require_once(__DIR__."/../model/Post.php");
-require_once(__DIR__."/../model/PostMapper.php");
+require_once(__DIR__."/../model/Nota.php");
+require_once(__DIR__."/../model/NotaMapper.php");
 //require_once(__DIR__."/../model/User.php");
 require_once(__DIR__."/../core/ViewManager.php");
 require_once(__DIR__."/../controller/BaseController.php");
@@ -52,7 +52,7 @@ class NotaController extends BaseController {
 
 public function add() {
   if (!isset($this->currentUser)) {
-    throw new Exception("Not in session. Adding posts requires login");
+    throw new Exception("Not in session. Adding notes requires login");
   }
   $nota = new Nota();
   if (isset($_POST["submit"])) { // reaching via HTTP Post...
@@ -63,7 +63,7 @@ public function add() {
     $nota->setUsuario_idUsuario($this->currentUser);
     try {
       // validate Post object
-      $post->checkIsValidForCreate(); // if it fails, ValidationException
+      $nota->checkIsValidForCreate(); // if it fails, ValidationException
       // save the Post object into the database
       $this->notaMapper->save($nota);
       // POST-REDIRECT-GET
@@ -84,9 +84,9 @@ public function add() {
     }
   }
   // Put the Post object visible to the view
-  $this->view->setVariable("post", $post);
+  $this->view->setVariable("nota", $nota);
   // render the view (/view/posts/add.php)
-  $this->view->render("posts", "add");
+  $this->view->render("notas", "add");
 }
 
 /*  MODIFICAR NOTA   */
@@ -96,23 +96,23 @@ public function edit() {
     throw new Exception("A nota id is mandatory");
   }
   if (!isset($this->currentUser)) {
-    throw new Exception("Not in session. Editing posts requires login");
+    throw new Exception("Not in session. Editing notes requires login");
   }
   // Get the Post object from the database
-  $postid = $_REQUEST["id"];
-  $post = $this->notaMapper->findByIdNota($idNota);
+  $notaid = $_REQUEST["id"];
+  $nota = $this->notaMapper->findByIdNota($idNota);
   // Does the post exist?
   if ($nota == NULL) {
-    throw new Exception("no such post with id: ".$idNota);
+    throw new Exception("no such note with id: ".$idNota);
   }
   // Check if the Post author is the currentUser (in Session)
   if ($nota->getUsuario_idUsuario() != $this->currentUser) {
-    throw new Exception("logged user is not the author of the post id ".$idNota);
+    throw new Exception("logged user is not the author of the note id ".$idNota);
   }
   if (isset($_POST["submit"])) { // reaching via HTTP Post...
     // populate the Post object with data form the form
-    $post->setTitle($_POST["nombre"]);
-    $post->setContent($_POST["contenido"]);
+    $nota->setTitle($_POST["nombre"]);
+    $nota->setContent($_POST["contenido"]);
     try {
       // validate Post object
       $nota->checkIsValidForUpdate(); // if it fails, ValidationException
@@ -147,19 +147,19 @@ public function delete() {
 			throw new Exception("id is mandatory");
 		}
 		if (!isset($this->currentUser)) {
-			throw new Exception("Not in session. Editing posts requires login");
+			throw new Exception("Not in session. Editing notes requires login");
 		}
 
 		// Get the Post object from the database
-		$postid = $_REQUEST["id"];
-		$post = $this->postMapper->findById($idNota);
+		$notaid = $_REQUEST["id"];
+		$nota = $this->notaMapper->findById($idNota);
 		// Does the post exist?
-		if ($post == NULL) {
-			throw new Exception("no such post with id: ".$idNota);
+		if ($nota == NULL) {
+			throw new Exception("no such note with id: ".$idNota);
 		}
 		// Check if the Post author is the currentUser (in Session)
-		if ($post->getUsuario_idUsuario() != $this->currentUser) {
-			throw new Exception("Post author is not the logged user");
+		if ($nota->getUsuario_idUsuario() != $this->currentUser) {
+			throw new Exception("Note author is not the logged user");
 		}
 		// Delete the Post object from the database
 		$this->notaMapper->delete($nota);
@@ -168,7 +168,7 @@ public function delete() {
 		// We want to see a message after redirection, so we establish
 		// a "flash" message (which is simply a Session variable) to be
 		// get in the view after redirection.
-		$this->view->setFlash(sprintf(i18n("Nota \"%s\" successfully deleted."),$post ->getTitle()));
+		$this->view->setFlash(sprintf(i18n("Nota \"%s\" successfully deleted."),$nota ->getTitle()));
 		// perform the redirection. More or less:
 		// header("Location: index.php?controller=posts&action=index")
 		// die();

@@ -280,3 +280,4 @@ class ViewManager {
 // since the buffered output will be needed including
 // those cases where neither the controller nor the view get the instance of the viewmanager
 ViewManager::getInstance();
+?>
