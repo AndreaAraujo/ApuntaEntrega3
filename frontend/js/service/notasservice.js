@@ -7,20 +7,20 @@ class NotasService {
     return $.get(AppConfig.backendServer+'/rest/nota');
   }
 
-  findNota(id) {
-    return $.get(AppConfig.backendServer+'/rest/nota/' + id);
+  findNota(idNota) {
+    return $.get(AppConfig.backendServer+'/rest/nota/' + idNota);
   }
 
-  deleteNota(id) {
+  deleteNota(idNota) {
     return $.ajax({
-      url: AppConfig.backendServer+'/rest/nota/' + id,
+      url: AppConfig.backendServer+'/rest/nota/' + idNota,
       method: 'DELETE'
     });
   }
 
   saveNota(nota) {
     return $.ajax({
-      url: AppConfig.backendServer+'/rest/nota/' + nota.id,
+      url: AppConfig.backendServer+'/rest/nota/' + nota.idNota,
       method: 'PUT',
       data: JSON.stringify(nota),
       contentType: 'application/json'

@@ -26,7 +26,7 @@ class  NotaModel extends Fronty.Model {
     });
   }
 
-  setNombre(contenido) {
+  setContenido(contenido) {
     this.set((self) => {
       self.contenido = contenido;
     });
