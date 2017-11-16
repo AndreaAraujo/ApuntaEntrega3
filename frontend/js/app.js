@@ -20,10 +20,6 @@ var AppConfig = {
   //backendServer: '/mvcblog'
 }
 
- /*var AppListen = {
-	console.log('App listening on port 8080');
-});*/
-
 Handlebars.templates = {};
 Promise.all([
     I18n.initializeCurrentLanguage('js/i18n'),
@@ -31,10 +27,10 @@ Promise.all([
       Handlebars.templates.main = Handlebars.compile(source)),
     loadTextFile('templates/components/language.hbs').then((source) =>
       Handlebars.templates.language = Handlebars.compile(source)),
-    loadTextFile('templates/components/user.hbs').then((source) =>
-      Handlebars.templates.user = Handlebars.compile(source)),
-    loadTextFile('templates/components/login.hbs').then((source) =>
-      Handlebars.templates.login = Handlebars.compile(source)),
+    loadTextFile('templates/components/usuario.hbs').then((source) =>
+      Handlebars.templates.usuario = Handlebars.compile(source)),
+    loadTextFile('templates/components/registro.hbs').then((source) =>
+      Handlebars.templates.registro = Handlebars.compile(source)),
     loadTextFile('templates/components/notas-table.hbs').then((source) =>
       Handlebars.templates.notastable = Handlebars.compile(source)),
     loadTextFile('templates/components/nota-edit.hbs').then((source) =>
