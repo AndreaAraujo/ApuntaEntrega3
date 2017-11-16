@@ -22,7 +22,7 @@ $currentuser = $view->getVariable("currentusername");
 	<!-- header -->
 	<header id="main-header">
 
-			<li><a href="index.php?controller=posts&amp;action=index">Posts</a></li>
+			<li><a href="index.php?controller=notas&amp;action=index">Notas</a></li>
 
 			<?php if (isset($currentuser)): ?>
 
