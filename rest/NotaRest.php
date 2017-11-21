@@ -103,7 +103,7 @@ class NotaRest extends BaseRest {
 		$nota = $this->notaMapper->findById($notaId);
 		if ($nota == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with id ".$idNota." not found");
+			echo("Note with id ".$idNota." not found");
 		}
 
 								/*SI PUEDE MODIFICAR, AUNQUE NO LO CREARA*/
@@ -131,7 +131,7 @@ class NotaRest extends BaseRest {
 		$nota = $this->notaMapper->findById($idNota);
 		if ($nota == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with id ".$idNota." not found");
+			echo("Note with id ".$idNota." not found");
 			return;
 		}
 		// Check if the Post author is the currentUser (in Session)
