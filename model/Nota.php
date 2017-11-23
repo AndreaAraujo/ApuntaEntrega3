@@ -47,45 +47,38 @@ class Nota {
       $this->Usuario_idUsuario = $Usuario_idUsuario;
     }
 
-    /*Comprobamos si se puede registrar la Nota. Si se puede retornamos un TRUE*/
-      public static function registroValido($nombre,$contenido){
-      $errores = array();
-      $error;
-
-      if (strlen($nombre) < 1 || strlen($nombre) > 50) {
-       $errores["nombre"] = "El nombre de la Nota debe tener entre 3 y 50 caracteres";
-       $error = i18n("El nombre de la Nota debe tener entre 3 y 50 caracteres");
-       header("Location: ../views/error.php?error=$error");
-      }
-      if (strlen($contenido) < 1 || strlen($contenido) > 300) {
-       $errores["contenido"] = "El contenido de la Nota debe tener entre 5 y 300 caracteres";
-       $error = i18n("El contenido de la Nota debe tener entre 5 y 300 caracteres");
-       header("Location: ../views/error.php?error=$error");
-      }
 
 
 
-      if (sizeof($error)==0){
-       return true;
-      }
-      }
+    public function checkIsValidForCreate() {
+  		$errors = array();
+  		if (strlen(trim($this->nombre)) == 0 || strlen($this->nombre) > 50) {
+  			$errors["nombre"] = "El nombre de la Nota debe tener entre 3 y 50 caracteres";
+  		}
+  		if (strlen(trim($this->contenido)) == 0 || strlen($this->contenido) > 300) {
+  			$errors["contenido"] = "El contenido de la Nota debe tener entre 5 y 300 caracteres";
+  		}
+
+  		if (sizeof($errors) > 0){
+  			throw new ValidationException($errors, il8n("La nota no es válida"));
+  		}
+  	}
 
 
-
-      public function checkIsValidForUpdate() {
-    		$errors = array();
-    		if (!isset($this->id)) {
-    			$errors["id"] = "id is mandatory";
-    		}
-    		try{
-    			$this->registroValido();
-    		}catch(ValidationException $ex) {
-    			foreach ($ex->getErrors() as $key=>$error) {
-    				$errors[$key] = $error;
-    			}
-		      }
-    		if (sizeof($errors) > 0) {
-    			throw new ValidationException($errors, "post is not valid");
-    		}
-	      }
-    }
+  	public function checkIsValidForUpdate() {
+  		$errors = array();
+  /*		if (!isset($this->id)) {
+  			$errors["id"] = "id is mandatory";
+  		}*/
+  		try{
+  			$this->checkIsValidForCreate();
+  		}catch(ValidationException $ex) {
+  			foreach ($ex->getErrors() as $key=>$error) {
+  				$errors[$key] = $error;
+  			}
+  		}
+  		if (sizeof($errors) > 0) {
+  			throw new ValidationException($errors, il8n("La nota no es válida"));
+  		}
+  	}
+  }

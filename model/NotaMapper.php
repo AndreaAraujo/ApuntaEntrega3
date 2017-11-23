@@ -1,9 +1,9 @@
 <?php
 // file: model/PostMapper.php
 require_once(__DIR__."/../core/PDOConnection.php");
-//require_once(__DIR__."/../model/User.php");
+require_once(__DIR__."/../model/Usuario.php");
 require_once(__DIR__."/../model/Nota.php");
-//require_once(__DIR__."/../model/Comment.php");
+require_once(__DIR__."/../model/NotaCompartida.php");
 
 class NotaMapper {
 
@@ -14,22 +14,32 @@ class NotaMapper {
 		$this->db = PDOConnection::getInstance();
   	}
 
-    /*Cogemos todos los datos de una Nota buscandolo por su ID y devolvemos un objeto nota*/
-    public static function findByIdNota($idNota){
 
-    	$stmt = $this->db->prepare("SELECT * FROM nota WHERE IdNota=?");
-      $stmt->execute(array($idNota));
-	  	$nota = $stmt->fetch(PDO::FETCH_ASSOC);
+		public function findAll() {
+				$stmt = $this->db->query("SELECT * FROM nota, usuario WHERE usuario.IdUsuario = nota.Usuario_idUsuario");
+				$notas_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				$notas = array();
+				foreach ($notas_db as $nota) {
+					$Usuario_idUsuario = new User($nota["IdUsuario"]);
+					array_push($notas, new Post($nota["IdNota"], $nota["nombre"], $nota["contenido"], $Usuario_idUsuario));
+				}
+				return $notas;
+			}
 
-      if($nota != null) {
-
-          return  new Nota($row['IdNota'],$row['nombre'],$row['contenido']);
-
-      } else {
-
-          return NULL;
-      }
-    }
+			public function findById($idNota){
+			$stmt = $this->db->prepare("SELECT * FROM nota WHERE IdNota=?");
+			$stmt->execute(array($idNota));
+			$nota = $stmt->fetch(PDO::FETCH_ASSOC);
+			if($nota != null) {
+				return new Nota(
+				$nota["IdNota"],
+				$nota["nombre"],
+				$nota["contenido"],
+				new Usuario($nota["Usuario_idUsuario"]));
+			} else {
+				return NULL;
+			}
+		}
 
 
       public function save(Nota $nota) {
@@ -40,10 +50,11 @@ class NotaMapper {
 
       public function update(Nota $nota) {
 			$stmt = $this->db->prepare("UPDATE nota set nombre=?, contenido=? where IdNota=?");
-			$stmt->execute(array($nota->getNombre(), $nota->getContenido(), $nota->getIdNota()));
+			$stmt->execute(array($nota->getIdNota(),$nota->getNombre(), $nota->getContenido() ));
 		}
 
     public function delete(Nota $nota) {
 			$stmt = $this->db->prepare("DELETE from nota WHERE IdNota=?");
 			$stmt->execute(array($nota->getIdNota()));
 		}
+}

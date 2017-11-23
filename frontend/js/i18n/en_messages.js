@@ -1,6 +1,8 @@
 I18n.translations = {
 	'Español' : 'Spanish',
 	'Inglés' : 'English',
+	'El usuario no es válido' : 'user is not valid',
+	'La nota no es válida' : 'post is not valid',
 	'Nombre de usuario' : 'Username',
 	'Contraseña' : 'Password',
 	'¡Regístrate aquí!' : 'Register here!',
