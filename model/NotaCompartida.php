@@ -27,3 +27,4 @@ class NotaCompartida {
     public function setIdUsu($idUsu) {
       $this->idUsu = $idUsu;
     }
+?>

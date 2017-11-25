@@ -1,15 +1,13 @@
 <?php
-// file: model/User.php
+// file: model/Usuario.php
 require_once(__DIR__."/../core/ValidationException.php");
 /**
-* Class User
+* Class Usuario
 *
 * Represents a User in the blog
 *
-* @author lipido <lipido@gmail.com>
 */
-class Usuario {
-
+class UsUARIO {
   private $IdUsuario;
 	private $login;
 	private $password;
@@ -17,16 +15,15 @@ class Usuario {
   private $confirmar;
 
   /*
-      Constructor del Usuario
-    */
+    Constructor del Usuario
+  */
     public function __construct($IdUsuario=NULL,$login= NULL, $password=NULL, $email=NULL  ) {
       $this->IdUsuario = $IdUsuario;
       $this->login = $login;
       $this->password = $password;
       $this->email= $email;
-
-
     }
+
     public function getIdUsuario() {
       return $this->IdUsuario;
     }
@@ -84,10 +81,9 @@ class Usuario {
         header("Location: ../views/error.php?error=$error");*/
     }
 
-
-
 		if (sizeof($errores)>0){
 			throw new ValidationException($errores, i18n("El usuario no es válido"));
 		}
 	}
 }
+?>

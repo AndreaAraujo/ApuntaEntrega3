@@ -46,5 +46,7 @@ I18n.translations = {
 	"El nombre de usuario debe tener al menos 4 caracteres" => "Username must be at least 4 characters",
 	"La dirección de email introducida no es válida" => "Incorrect email address",
 	"La contraseña debe tener al menos 5 caracteres" => "Password must be at least 5 characters",
-	"Las contraseñas no coinciden. Por favor, inténtelo de nuevo" => "Passwords don't match. Please try again"
+	"Las contraseñas no coinciden. Por favor, inténtelo de nuevo" => "Passwords don't match. Please try again",
+	"Usuario registrado! Por favor, inicia sesión" => "User registered! Please login",
+	"un error ha ocurrido durante la solicitud:" => "an error has occurred during request:"
 }

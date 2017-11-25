@@ -58,3 +58,5 @@ class NotaMapper {
 			$stmt->execute(array($nota->getIdNota()));
 		}
 }
+
+?>

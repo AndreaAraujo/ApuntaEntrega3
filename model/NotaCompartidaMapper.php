@@ -35,7 +35,7 @@ class NotaMapper {
     $stmt->execute(array($idNotaC));
     $notaC = $stmt->fetch(PDO::FETCH_ASSOC);
     if($notaC != null) {
-  
+
         return new NotaCompartida(
       $notaC["idUsu"],
       $notaC["idNotaC"]
@@ -45,3 +45,5 @@ class NotaMapper {
     }
   }
   }
+
+?>

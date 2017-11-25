@@ -1,0 +1,94 @@
+#main-header {
+	position:absolute;
+	background: url("../img/imgcabecera.jpg");
+	background-size:200px;
+	background-repeat:repeat-x;
+	width: 90%;
+	position:absolute;
+	margin-left: 98px;
+	height:150px;
+	border: 3px solid #000000;
+}
+
+img.logo{
+	width:145px;
+	position: relative;
+	left: 10px;
+}
+
+.bloque{
+	float: right;
+}
+
+#salir, #notas{
+	margin-right: 20px;
+	font-family: "Cooper Black";
+	font-size: 15px;
+	color: white;
+	background-color: black;
+	border-radius: 15px;
+	padding: 4px  12px  4px  12px;
+	border: 2px solid white;
+}
+
+body{
+	font-family: "Georgia";
+	overflow-x: hidden;
+	position: absolute;
+	background: url("../img/imgbody.jpg");
+	background-repeat : repeat-y;
+	background-size: cover;
+	height: 800px;
+}
+
+#main-content {
+	position:relative;
+	top:70px;
+	margin-left: 100px;
+}
+
+h1{
+	font-family: "MV Boli";
+	font-size: 50px;
+	margin : 120px 20px  20px;
+}
+
+.btn{
+	background:#c4c4c4;
+	margin: 20px 5px;
+}
+
+.btn-group{
+	margin-left: 84px;
+}
+
+#btnGuardar{
+	color: #ff6e00;
+}
+
+.formularioCrear{
+	margin: 20px 55px;
+}
+
+#labelNombre, #contenidoNota{
+	font-weight: bold;
+	font-family: "Homer Simpson",cursive;
+	font-size: 30px;
+	margin: 10px;
+}
+
+#textBoxContenido{
+	height:100px;
+}
+
+#main-footer {
+	background: url("../img/mesafooter.jpg");
+	background-size: cover;
+	color: #c4c4c4, blond;
+	text-align: center;
+	margin-top: 50%;
+	width:110%;
+	height: 60px;
+	position: relative;
+	font-size: 15px;
+}
