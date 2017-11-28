@@ -16,7 +16,7 @@ function loadTextFile(url) {
 
 // Configuration
 var AppConfig = {
-  backendServer: 'http://localhost'
+  backendServer: 'http://localhost/ApuntaEntrega3'
   //backendServer: '/mvcblog'
 }
 
