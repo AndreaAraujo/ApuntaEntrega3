@@ -4,7 +4,7 @@ require_once(__DIR__."/../model/UserMapper.php");
 require_once(__DIR__."/../model/Nota.php");
 require_once(__DIR__."/../model/NotaMapper.php");
 /*require_once(__DIR__."/../model/Comment.php");*/
-require_once(__DIR__."/../model/CommentMapper.php");
+//require_once(__DIR__."/../model/CommentMapper.php");
 require_once(__DIR__."/BaseRest.php");
 /**
 * Class PostRest
@@ -24,25 +24,25 @@ class NotaRest extends BaseRest {
 		$this->notaMapper = new NotaMapper();
 		//$this->commentMapper = new CommentMapper();
 	}
-	/*public function getNotas() {
-		$posts = $this->notaMapper->findAll();
+	public function getNotas($usuario) {
+		$notas = $this->notaMapper->findAll($usuario);
 		// json_encode Post objects.
 		// since Post objects have private fields, the PHP json_encode will not
 		// encode them, so we will create an intermediate array using getters and
 		// encode it finally
-		$posts_array = array();
-		foreach($posts as $post) {
-			array_push($posts_array, array(
-				"id" => $post->getId(),
-				"title" => $post->getTitle(),
-				"content" => $post->getContent(),
-				"author_id" => $post->getAuthor()->getusername()
+		$notas_array = array();
+		foreach($notas as $nota) {
+			array_push($notas_array, array(
+				"IdNota" => $nota->getIdNota(),
+				"nombre" => $nota->getNombre(),
+				"contenido" => $nota->getContenido(),
+				"Usuario_idUsuario" => $nota->getUsuario_idUsuario(),//->getusername()
 			));
 		}
 		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
 		header('Content-Type: application/json');
 		echo(json_encode($posts_array));
-	}*/
+	}
 	public function createNota($data) {
 		$currentUser = parent::authenticateUser();
 		$nota = new Nota();

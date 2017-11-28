@@ -989,7 +989,10 @@ var Component = function () {
     value: function _eventsListener(event) {
       for (var i = 0; i < this.eventListeners.length; i++) {
         var listener = this.eventListeners[i];
-        if (event.target.matches(listener.query) && listener.eventType === event.type) {
+        if (( //the target matches exactly with the query
+        event.target.matches(listener.query) ||
+        //the target is a child node of the query
+        event.target.matches(listener.query + " *")) && listener.eventType === event.type) {
           event.preventDefault();
           listener.callback(event);
           return;
@@ -1924,6 +1927,8 @@ var RouterComponent = function (_ModelComponent) {
    *
    * @param {String} rootHtmlId The HTML element id where the router renders.
    * @param {Function} modelRenderer the model renderer function
+   * @param {String} routeContentsHtmlId The HTML element id where the different views of the router are placed
+   * @param {Model} model The model
    */
   function RouterComponent(rootHtmlId, modelRenderer, routeContentsHtmlId, model) {
     _classCallCheck(this, RouterComponent);

@@ -1,35 +1,35 @@
 class LoginComponent extends Fronty.ModelComponent {
   constructor(usuarioModel, router) {
     super(Handlebars.templates.login, usuarioModel);
-    this.userModel = usuarioModel;
+    this.usuarioModel = usuarioModel;
     this.usuarioService = new UsuarioService();
     this.router = router;
 
-    this.addEventListener('click', '#loginbutton', (event) => {
-      this.usuarioService.login($('#login').val(), $('#password').val(), $('email'))
+    this.addEventListener('click', '#nombreLogin', (event) => {
+      this.userService.login($('#login').val(), $('#password').val())
         .then(() => {
           this.router.goToPage('notas');
-          this.usuarioModel.setLoggeduser($('#login').val());
+          this.usuarioModel.setLoggedusuario($('#login').val());
         })
         .catch(() => {
           this.usuarioModel.logout();
         });
     });
 
-    this.addEventListener('click', '#registerlink', () => {
+    this.addEventListener('click', '#btnNuevoRegistro', () => {
       this.usuarioModel.set(() => {
         this.usuarioModel.registerMode = true;
       });
     });
 
-    this.addEventListener('click', '#registerbutton', () => {
+    this.addEventListener('click', '#btnRegistro', () => {
       this.usuarioService.register({
-          usuario: $('#registerusername').val(),
-          contraseña: $('#registerpassword').val(),
-          email: $('#registeremail').val()
+          login: $('#registroNombre').val(),
+          password: $('#registroPassword').val(),
+          email: $('#registroEmail').val()
         })
         .then(() => {
-          alert(I18n.translate('Usuario registrado! Por favor, inicia sesión'));
+          alert(I18n.translate('Usuario registrado! logeate'));
           this.usuarioModel.set((model) => {
             model.registerErrors = {};
             model.registerMode = false;
@@ -41,7 +41,7 @@ class LoginComponent extends Fronty.ModelComponent {
               this.usuarioModel.registerErrors = xhr.responseJSON;
             });
           } else {
-            alert('un error ha ocurrido durante la solicitud:' + statusText + '.' + xhr.responseText);
+            alert('an error has occurred during request: ' + statusText + '.' + xhr.responseText);
           }
         });
     });

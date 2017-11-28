@@ -3,16 +3,42 @@
   {{i18n 'Your are logged. Logout first'}}
 {{else}}
 
-  {{i18n 'Username'}}: <input type="text" id="login"> <br> {{i18n 'Password'}}: <input type="password" id="password"><br>
-  <input type="submit" id='loginbutton' value="{{i18n 'Login'}}"> {{i18n 'New here?'}} <a href="#login" id='registerlink'>{{i18n 'Register Here!'}}</a>
+<div class="container" id="login">
+
+  <center >
+      <label for = "logUsuario">{{i18n 'Nombre de usuario'}}:</label>
+      <input type="text" name="logUsuario" id ="nombreLogin"><br><br>
+      <label for = "conUsuario">{{i18n 'Contraseña'}}:</label>
+      <input type="password" name="conUsuario" id="password"><br><br>
+      <a href="views/registro.php" id="btnNuevoRegistro">{{i18n '¡Regístrate aquí!' }}</a>
+      <button type="submit" class="btn btn-default" id ="loginbutton">{{i18n 'Iniciar sesión' }}</button>
+  </center>
+
+</div>
+
+
+
   {{#if registerMode}}
-    <h2>{{i18n 'New user'}}</h2>
-    <div id="registration-form">
-      {{i18n 'Username'}}: <input type="text" id="registerusername">
-      {{#i18n}}{{registerErrors.username}}{{/i18n}}<br> {{i18n 'Password'}}: <input type="password" id="registerpassword">
-      {{#i18n}}{{registerErrors.passwd}}{{/i18n}}<br>
-      <input type="submit" id='registerbutton' value="{{i18n 'Create user'}}">
-    </div>
+
+  <div class="container" id="login">
+    <center>
+        <label for = "logUsuario">{{i18n 'Nombre de usuario' }}:</label>
+        <input type="text" name="logUsuario" id="registroNombre">
+
+        <label for = "emailUsuario">{{i18n 'Correo electrónico'}}:</label>
+        <input type="text" name="emailUsuario" id="registroEmail">
+
+        <label for = "conUsuario">{{i18n 'Contraseña' }}:</label>
+        <input type="password" name="conUsuario" id="registroPassword" maxlength="8">
+
+        <label for = "confirmar">{{i18n 'Confirmar contraseña' }}:</label>
+        <input type="password" name="confirmar" maxlength="8" id="registroPassword"><br><br>
+
+        <input type="submit" name="enviar"  id = "btnRegistro" value = "{{i18n 'Registrar'}}">
+        <a id="atrasRegistro">{{i18n 'Atrás' }}</a>
+    </center>
+  </div>
+
   {{/if}}
 
 {{/if}}

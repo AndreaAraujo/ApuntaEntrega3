@@ -6,7 +6,7 @@ RewriteEngine On
 # http://host/dir/subdir, change the RewriteBase to:
 # RewriteBase /dir/subdir/rest
 
-RewriteBase /mvcblog/rest
+RewriteBase /ApuntaEntrega3/rest
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

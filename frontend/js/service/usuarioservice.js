@@ -7,8 +7,8 @@ class UsuarioService {
     var self = this;
     return new Promise((resolve, reject) => {
       if (window.sessionStorage.getItem('login') &&
-        window.sessionStorage.getItem('pass') && window.sessionStorage.getItem('email')) {
-        self.login(window.sessionStorage.getItem('login'), window.sessionStorage.getItem('pass'), window.sessionStorage.getItem('email'))
+        window.sessionStorage.getItem('pass'){
+        self.login(window.sessionStorage.getItem('login'), window.sessionStorage.getItem('pass'))
           .then(() => {
             resolve(window.sessionStorage.getItem('login'));
           })
@@ -21,23 +21,23 @@ class UsuarioService {
     });
   }
 
-  login(login, pass, email) {
+  login(login, pass) {
     return new Promise((resolve, reject) => {
 
       $.get({
           url: AppConfig.backendServer+'/rest/usuario/' + login,
           beforeSend: function(xhr) {
-            xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass + ":" + email));
+            xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass ));
           }
         })
         .then(() => {
           //keep this authentication forever
           window.sessionStorage.setItem('login', login);
           window.sessionStorage.setItem('pass', pass);
-          window.sessionStorage.getItem('email', email);
+
           $.ajaxSetup({
             beforeSend: (xhr) => {
-              xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass + ":" + email));
+              xhr.setRequestHeader("Authorization", "Basic " + btoa(login + ":" + pass ));
             }
           });
           resolve();
@@ -45,7 +45,6 @@ class UsuarioService {
         .fail(() => {
           window.sessionStorage.removeItem('login');
           window.sessionStorage.removeItem('pass');
-          window.sessionStorage.removeItem('email');
           $.ajaxSetup({
             beforeSend: (xhr) => {}
           });
@@ -57,7 +56,6 @@ class UsuarioService {
   logout() {
     window.sessionStorage.removeItem('login');
     window.sessionStorage.removeItem('pass');
-    window.sessionStorage.removeItem('email');
     $.ajaxSetup({
       beforeSend: (xhr) => {}
     });

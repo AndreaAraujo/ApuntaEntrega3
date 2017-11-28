@@ -15,8 +15,9 @@ class NotaMapper {
   	}
 
 
-		public function findAll() {
-				$stmt = $this->db->query("SELECT * FROM nota, usuario WHERE usuario.IdUsuario = nota.Usuario_idUsuario");
+		public function findByIdUsuario($usuario) {
+				$stmt = $this->db->query("SELECT * FROM nota, usuario WHERE usuario.IdUsuario =? AND usuario.IdUsuario = nota.Usuario_idUsuario");
+				$stmt -> execute( array($usuario -> getIdUsuario());)
 				$notas_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				$notas = array();
 				foreach ($notas_db as $nota) {
