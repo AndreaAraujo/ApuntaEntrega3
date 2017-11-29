@@ -41,7 +41,7 @@ class LoginComponent extends Fronty.ModelComponent {
               this.usuarioModel.registerErrors = xhr.responseJSON;
             });
           } else {
-            alert('an error has occurred during request: ' + statusText + '.' + xhr.responseText);
+            alert('un error ha ocurrido durante la solicitud: ' + statusText + '.' + xhr.responseText);
           }
         });
     });

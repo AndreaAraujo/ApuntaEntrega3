@@ -53,7 +53,7 @@ class MainComponent extends Fronty.RouterComponent {
     usuarioService.loginWithSessionData()
       .then(function(logged) {
         if (logged != null) {
-          userModel.setLoggeduser(logged);
+          usuarioModel.setLoggeduser(logged);
         }
       });
 

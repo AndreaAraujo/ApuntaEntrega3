@@ -29,8 +29,8 @@ Promise.all([
       Handlebars.templates.language = Handlebars.compile(source)),
     loadTextFile('templates/components/usuario.hbs').then((source) =>
       Handlebars.templates.usuario = Handlebars.compile(source)),
-    loadTextFile('templates/components/registro.hbs').then((source) =>
-      Handlebars.templates.registro = Handlebars.compile(source)),
+    loadTextFile('templates/components/login.hbs').then((source) =>
+      Handlebars.templates.login = Handlebars.compile(source)),
     loadTextFile('templates/components/notas-table.hbs').then((source) =>
       Handlebars.templates.notastable = Handlebars.compile(source)),
     loadTextFile('templates/components/nota-edit.hbs').then((source) =>
