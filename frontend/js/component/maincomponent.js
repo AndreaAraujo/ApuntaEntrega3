@@ -24,7 +24,7 @@ class MainComponent extends Fronty.RouterComponent {
         component: new NotaAddComponent(notasModel, usuarioModel, this),
         title: 'Añadir Nota'
       },
-      login: {
+      'login': {
         component: new LoginComponent(usuarioModel, this),
         title: 'Login'
       },
