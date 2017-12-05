@@ -13,7 +13,7 @@ class NotaAddComponent extends Fronty.ModelComponent {
       var nuevaNota = {};
       nuevaNota.nombre = $('#nombre').val();
       nuevaNota.contenido = $('#contenido').val();
-      nuevaNota.Usuario_idUsuario = this.usuarioModel.currentUsuario;
+      nuevaNota.Usuario_idUsuario = this.usuarioModel.currentUser;
       this.notasService.addNota(nuevaNota)
         .then(() => {
           this.router.goToPage('notas');

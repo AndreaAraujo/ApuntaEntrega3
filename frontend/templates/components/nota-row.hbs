@@ -1,9 +1,9 @@
 <tr key="{{idNota}}">
   <td><a href="#view-post?id={{idNota}}">{{nombre}}</a></td>
-  <td>{{Usuario_idUsuario}} ({{usuario.currentUsuario}})</td>
+  <td>{{Usuario_idUsuario}} ({{usuario.currentUser}})</td>
   <td>
 
-    {{#if_eq usuario.currentUsuario Usuario_idUsuario}}
+    {{#if_eq usuario.currentUser Usuario_idUsuario}}
 
       <button class="remove-button" item="{{idNota}}">{{i18n 'remove'}}</button>
       <button class="edit-button" item="{{idNota}}">{{i18n 'edit'}}</button>
