@@ -24,20 +24,20 @@ Promise.all([
     I18n.initializeCurrentLanguage('js/i18n'),
     loadTextFile('templates/components/main.hbs').then((source) =>
       Handlebars.templates.main = Handlebars.compile(source)),
-  /*  loadTextFile('templates/components/language.hbs').then((source) =>
+    loadTextFile('templates/components/language.hbs').then((source) =>
       Handlebars.templates.language = Handlebars.compile(source)),
     loadTextFile('templates/components/usuario.hbs').then((source) =>
-      Handlebars.templates.usuario = Handlebars.compile(source)),*/
+      Handlebars.templates.usuario = Handlebars.compile(source)),
     loadTextFile('templates/components/login.hbs').then((source) =>
-      Handlebars.templates.login = Handlebars.compile(source))//,
-/*    loadTextFile('templates/components/notas-table.hbs').then((source) =>
+      Handlebars.templates.login = Handlebars.compile(source)),
+    loadTextFile('templates/components/nota-editar.hbs').then((source) =>
+      Handlebars.templates.notaeditar = Handlebars.compile(source))
+    loadTextFile('templates/components/notas-table.hbs').then((source) =>
       Handlebars.templates.notastable = Handlebars.compile(source)),
-    loadTextFile('templates/components/nota-edit.hbs').then((source) =>
-      Handlebars.templates.notaedit = Handlebars.compile(source)),
     loadTextFile('templates/components/nota-view.hbs').then((source) =>
       Handlebars.templates.notaview = Handlebars.compile(source)),
     loadTextFile('templates/components/nota-row.hbs').then((source) =>
-      Handlebars.templates.notarow = Handlebars.compile(source))*/
+      Handlebars.templates.notarow = Handlebars.compile(source))
   ])
   .then(() => {
     $(() => {

@@ -1,0 +1,23 @@
+<div>
+<h1>{{i18n 'Notas'}}</h1>
+<div id="posts-table">
+  {{#if notas.length}}
+    <table border="1">
+      <thead>
+      <tr>
+        <th>{{i18n 'Nombre'}}</th>
+        <th>{{i18n 'Contenido'}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each notas}}
+        <tr fronty-component="NotaRowComponent" key="{{idNota}}" model="notas[{{@index}}]" id="item-{{idNota}}"></tr>
+      {{/each}}
+    </tbody>
+    </table>
+  {{/if}}
+</div>
+{{#if usuario.isLogged}}
+  <a href='#add-nota'>{{i18n 'Add note'}}</a>
+{{/if}}
+</div>

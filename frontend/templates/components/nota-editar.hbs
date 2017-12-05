@@ -1,0 +1,9 @@
+<div>
+  {{i18n 'Nombre'}}:<input type="text" id="title" value="{{selectedNota.nombre}}">
+  {{#i18n}}{{errors.nombre}}{{/i18n}}<br> {{i18n 'Contenido'}}:
+  <br>
+  <textarea id="contenido" rows="20" cols="80">{{selectedNota.contenido}}</textarea>
+  {{#i18n}}{{errors.contenido}}{{/i18n}}
+  <br>
+  <input type="button" id="botonGuardar" value="{{i18n 'Guardar'}}"></input>
+</div>

@@ -12,17 +12,17 @@ class MainComponent extends Fronty.RouterComponent {
         component: new NotasComponent(notasModel, usuarioModel, this),
         title: 'Notas'
       },
-      'ver-nota': {
-        component: new NotaVerComponent(notasModel, usuarioModel, this),
-        title: 'Nota'
-      },
-      'editar-nota': {
-        component: new NotaEditarComponent(notasModel, usuarioModel, this),
-        title: 'Editar Nota'
-      },
+      // 'ver-nota': {
+      //   component: new NotaVerComponent(notasModel, usuarioModel, this),
+      //   title: 'Nota'
+      // },
+       'editar-nota': {
+         component: new NotaEditarComponent(notasModel, usuarioModel, this),
+         title: 'Editar Nota'
+       },
       'add-nota': {
         component: new NotaAddComponent(notasModel, usuarioModel, this),
-        title: 'Añadir Nota'
+        title: 'Add Nota'
       },
       'login': {
         component: new LoginComponent(usuarioModel, this),
